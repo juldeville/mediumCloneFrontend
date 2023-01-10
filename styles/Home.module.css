@@ -1,22 +1,30 @@
-.main {
+.homeHeaderContainer {
+  padding-left: 60px;
+  background-color: #ffc017;
+  height: 35vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+ justify-content: center;
+ border-bottom: 1px solid black;
 }
 
 .title {
-  line-height: 1.15;
-  font-size: 4rem;
+  font-size: 60px;
+  margin-top: 20px;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.button {
+  border-radius: 20px;
+  width: 200px;
+  height: 40px;
+  color: white;
+  background-color: black;
+  margin-bottom: 20px;
+  font-size: 18px;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.slogan {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  
 }

@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+    border-bottom:  1px solid black;
+    background-color: #ffc017
+}
+
+.logo {
+    display: flex;
+    padding-left: 60px
+    
+}
+
+.headerLinks {
+    display: flex;
+    padding-right: 60px;
+
+}
+
+.image {
+    width: 80px;
+    height: 80px
+}
+
+.link {
+    margin-right: 30px
+}
+
+
+.signUpLink {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 100px;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    margin-top: 13px
+
+}
