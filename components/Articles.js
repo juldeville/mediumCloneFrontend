@@ -7,21 +7,24 @@ function Articles(props) {
         <div className={styles.card}>
             <div className={styles.cardAuthorAndBookmark}>
                 <div className={styles.authorInfo}>
-                    <img className={styles.authorAvatar} src={props.avatar} />
-                    <div className={styles.cardAuthor}>{props.author}</div>
+                    <img className={styles.authorAvatar} src={props.author.image} />
+                    <div className={styles.username}>{props.author.username}</div>
                 </div>
-                <FontAwesomeIcon icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon}/>
+                <FontAwesomeIcon icon={faBookmark}  className={styles.bookmarkIcon}/>
             </div>
             <div className={styles.articleContent}>
-                <div className={styles.articleTitle}>{props.title}</div>
-                <div className={styles.articleDescription}>{props.description}</div>
-            </div>
-            <div>
-                <h6>December 9, 2022</h6>
                 <div>
-                        <h6>voluptate</h6>
-                        <h6>rerum</h6>
-                        <h6>ducimus</h6>
+                    <div className={styles.articleTitle}>{props.title}</div>
+                    <div className={styles.articleDescription}>{props.description}
+                    </div>
+                </div>
+            </div>
+            <div className={styles.footerContent}>
+                <h6 className={styles.date}>December 9, 2022</h6>
+                <div className={styles.tagsContainer}>
+                        <h6 className={styles.tags}>voluptate</h6>
+                        <h6 className={styles.tags}>rerum</h6>
+                        <h6 className={styles.tags}>ducimus</h6>
                 </div>
             </div>
         </div>
