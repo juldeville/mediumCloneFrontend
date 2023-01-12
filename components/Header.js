@@ -14,7 +14,9 @@ function Header () {
                 <h6 className={styles.link}>Our story</h6>
                 <Link href="/bookmarks"><h6 className={styles.link}>Bookmarks</h6></Link>
                 <h6 className={styles.link}>Sign in</h6>
-                <button className={styles.signUpLink}>Get started</button>
+                <div>
+                    <button className={styles.signUpLink}>Get started</button>
+                </div>
             </div>
         </div>
     )
