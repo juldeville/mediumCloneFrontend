@@ -6,6 +6,10 @@ import Trending from './Trending'
 
 function Home() {
   const [articlesData, setArticlesData] = useState([])
+  const [displayedArticles, setDisplayedArticles] = useState(articlesData.slice(0,10))
+  const [articlesToAdd, setArticlesToAdd] = useState(10)
+
+  const [tagData, setTagData] = useState([])
 /*   const [trendingArticle, setTrendingArticle] = useState([]) */
 
   useEffect(() => {
@@ -14,12 +18,34 @@ function Home() {
       .then(data => {
 /*         setTrendingArticle(data.articles.slice(0, 6)) */
         setArticlesData(data.articles)
+        setDisplayedArticles(data.articles.slice(0, 10))
       })
   }, [])
 
-  const articles = articlesData.map((data, i) => {
+  useEffect(() => {
+    fetch('http://localhost:3000/popularTags')
+      .then(response => response.json())
+      .then(data => {
+        setTagData(data.tags)
+      })
+  }, [])
+
+  const handleScroll = () => {
+    if(window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      setDisplayedArticles(prevDisplayedArticles => [...prevDisplayedArticles, ...articlesData.slice(prevDisplayedArticles.length, prevDisplayedArticles.length + articlesToAdd)])
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [displayedArticles])
+
+  const articles = displayedArticles.map((data, i) => {
     return(<Articles {...data} key={i}/>)
   })
+
+  const mainTags = tagData.map((tag, index) => <p key={index} className={styles.tag}>{tag}</p>)
 
   return (
     <div>
@@ -40,13 +66,7 @@ function Home() {
           <div className={styles.mainTagContainer}>
             <div className={styles.tagTitle}>DISCOVER MORE OF WHAT MATTERS TO YOU</div>
               <div className={styles.tagContainer}>
-                <p className={styles.tag}>voluptateazefazef</p>
-                <p className={styles.tag}>rerum</p>
-                <p className={styles.tag}>ducimus</p>
-                <p className={styles.tag}>implementations</p>
-                <p className={styles.tag}>quia</p>
-                <p className={styles.tag}>cupiditate</p>
-                <p className={styles.tag}>deserunt</p>
+                {mainTags}
               </div>
           </div>
         </div>

@@ -22,9 +22,7 @@ function Articles(props) {
             <div className={styles.footerContent}>
                 <h6 className={styles.date}>December 9, 2022</h6>
                 <div className={styles.tagsContainer}>
-                        <h6 className={styles.tags}>voluptate</h6>
-                        <h6 className={styles.tags}>rerum</h6>
-                        <h6 className={styles.tags}>ducimus</h6>
+                {props.tagList.length > 0 && props.tagList.map((tag, index) => <h6 key={index} className={styles.tags}>{tag}</h6>)}
                 </div>
             </div>
         </div>

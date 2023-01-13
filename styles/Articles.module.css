@@ -55,9 +55,9 @@
 
 .tags {
     margin-left: 10px;
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 20px;
-    color: #999999;
-    border-color: #999999;
+    background-color: #e6e6e6;    padding: 5px;
+    border-radius: 10px;
+    color: black;
+    font-weight: 200;
+    font-size: 12px;
 }

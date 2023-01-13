@@ -51,7 +51,7 @@
 
 .tagTitle {
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 5px;
   font-size: 12px;
 }
@@ -59,8 +59,9 @@
 .tagContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 150px;
+  width: 250px;
   margin-bottom: 30px;
+  margin-top: 20px
 }
 
 .tag {
