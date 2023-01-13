@@ -1,5 +1,5 @@
 .homeHeaderContainer {
-  padding-left: 60px;
+  padding-left: 15vw;
   background-color: #ffc017;
   height: 35vh;
   display: flex;
@@ -10,7 +10,7 @@
 }
 
 .title {
-  font-size: 60px;
+  font-size: 75px;
   margin-top: 20px;
   font-weight: 600;
 }
@@ -28,12 +28,13 @@
 .slogan {
   margin-top: 20px;
   margin-bottom: 30px;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 24px;
   
 }
 
 .articlesContainer {
-  padding-left: 60px;
+  padding-left: 15vw;
 }
 
 .bodyContainer {
