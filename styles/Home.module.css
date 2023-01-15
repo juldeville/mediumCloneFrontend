@@ -1,12 +1,13 @@
 .homeHeaderContainer {
   padding-left: 15vw;
   background-color: #ffc017;
-  height: 35vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
  justify-content: center;
  border-bottom: 1px solid black;
  margin-bottom: 40px;
+padding-top: 50px;
 }
 
 .title {

@@ -2,14 +2,21 @@ import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react'
 import Articles from './Articles'
 import Trending from './Trending'
+import { useSelector } from 'react-redux'
 
 
 function Home() {
   const [articlesData, setArticlesData] = useState([])
   const [displayedArticles, setDisplayedArticles] = useState(articlesData.slice(0,10))
   const [articlesToAdd, setArticlesToAdd] = useState(10)
-
   const [tagData, setTagData] = useState([])
+/*   const [randomDate, setRandomDate] = useState(null)
+  
+  useEffect(() => {
+      setRandomDate(formattedDate)
+  }, []) */
+
+  const bookmarks = useSelector(state => state.bookmarks.value)
 
   useEffect(() => {
     fetch('http://localhost:3000/articles')
@@ -40,12 +47,13 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [displayedArticles])
 
-  const randomArticles = articlesData.sort(() => Math.random() - 0.5)
-  const articles = randomArticles.slice(0, displayedArticles.length).map((data, i) => {
-    return(<Articles {...data} key={i}/>)
+  const articles = displayedArticles.map((data, i) => {
+    const isBookmarked = bookmarks.some(bookmark => bookmark.title === data.title)
+    return(<Articles {...data} key={i} isBookmarked={isBookmarked || false}/>)
   })
 
   const mainTags = tagData.map((tag, index) => <p key={index} className={styles.tag}>{tag}</p>)
+
 
   return (
     <div>

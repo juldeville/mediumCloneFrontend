@@ -1,9 +1,30 @@
 import styles from '../styles/Articles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
+import { useEffect, useState } from 'react'
+
 
 function Articles(props) {
+    const dispatch = useDispatch()
     const { author = {} } = props
+
+        const handleBookmark = () => {
+            if (props.isBookmarked) {
+                dispatch(removeBookmarkFromStore(props))
+            } else {
+                dispatch(addBookmarkToStore(props))
+            }
+        }
+
+    let iconStyle = {}
+    if (props.isBookmarked) {
+        iconStyle = {color: '#ffc017'}
+    } else {
+        iconStyle = {color: 'currentColor'}
+    }
+
     return (
         <div className={styles.cardAndImage}>
             <div className={styles.card}>
@@ -12,7 +33,7 @@ function Articles(props) {
                         <img className={styles.authorAvatar} src={author.image} />
                         <div className={styles.username}>{author.username}</div>
                     </div>
-                    <FontAwesomeIcon icon={faBookmark}  className={styles.bookmarkIcon}/>
+                    <FontAwesomeIcon icon={faBookmark}  className={styles.bookmarkIcon} style={iconStyle} onClick={handleBookmark}/>
                 </div>
                 <div className={styles.articleContent}>
                     <div>
@@ -22,9 +43,9 @@ function Articles(props) {
                     </div>
                 </div>
                 <div className={styles.footerContent}>
-                    <h6 className={styles.date}>December 9, 2022</h6>
+                    <h6 className={styles.date}>{props.date}</h6>
                     <div className={styles.tagsContainer}>
-                    {props.tags.length > 0 && props.tags.map((tag, index) => <h6 key={index} className={styles.tags}>{tag}</h6>)}
+                    {props.tags.length > 0 && props.tags.map((tag, index) => <div key={index} className={styles.tags}>{tag}</div>)}
                     </div>
                 </div>
             </div>

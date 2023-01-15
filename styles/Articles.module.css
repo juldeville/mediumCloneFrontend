@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 .authorInfo {
@@ -18,7 +19,8 @@
 
 .authorAvatar {
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
+    width: 30px;
 }
 
 .username {
@@ -26,16 +28,27 @@
     font-weight: 500;
 }
 
+.bookmarkIcon {
+    cursor: pointer;
+}
+
+.bookmarkIcon {
+    cursor: pointer;
+}
+
 .articleContent {
     display: flex;
     flex-direction: column;
-
 }
 
 .articleTitle {
     font-weight: 700;
     margin-bottom: 10px;
     font-size: 24px;
+}
+
+.articleDescription {
+    font-size: 16px;
 }
 
 .footerContent {
@@ -47,6 +60,7 @@
 
 .date {
     color: #999999;
+    font-size: 12px;
 }
 
 .tagsContainer {
@@ -72,6 +86,5 @@
 .cardImage {
     width: 200px;
     height: 150px;
-    margin-left: 30px;
-    padding-bottom: 0;
+    margin-left: 40px;
 }
