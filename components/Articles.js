@@ -9,6 +9,12 @@ import { useEffect, useState } from 'react'
 function Articles(props) {
     const dispatch = useDispatch()
     const { author = {} } = props
+    const bookmarks = useSelector(state => state.bookmarks.value)
+    console.log('helloooooo', bookmarks)
+
+    const date = new Date(props.date_published);
+    const formattedDate = date.toLocaleDateString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+
 
         const handleBookmark = () => {
             if (props.isBookmarked) {
@@ -33,7 +39,7 @@ function Articles(props) {
                         <img className={styles.authorAvatar} src={author.image} />
                         <div className={styles.username}>{author.username}</div>
                     </div>
-                    <FontAwesomeIcon icon={faBookmark}  className={styles.bookmarkIcon} style={iconStyle} onClick={handleBookmark}/>
+                    {props.visibleBookmark && <FontAwesomeIcon icon={faBookmark}  className={styles.bookmarkIcon} style={iconStyle} onClick={handleBookmark}/> }
                 </div>
                 <div className={styles.articleContent}>
                     <div>
@@ -43,7 +49,7 @@ function Articles(props) {
                     </div>
                 </div>
                 <div className={styles.footerContent}>
-                    <h6 className={styles.date}>{props.date}</h6>
+                    <h6 className={styles.date}>{formattedDate}</h6>
                     <div className={styles.tagsContainer}>
                     {props.tags.length > 0 && props.tags.map((tag, index) => <div key={index} className={styles.tags}>{tag}</div>)}
                     </div>

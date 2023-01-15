@@ -34,14 +34,15 @@ function Header () {
   
     return (
         <div className={styles.container} style={{backgroundColor: color, transition: 'background-color 0.5s ease-in-out',}}>
+          <Link href="/">
             <div className={styles.logo}>
-                <img src='rocket.png' className={styles.image}/>
-                <h1 className={styles.title}>DHF</h1>
+            <img src='rocket.png' className={styles.image}/><h1 className={styles.title}>DHF</h1>
             </div>
+            </Link>
             <div className={styles.headerLinks}>
                 <h6 className={styles.link}>Our story</h6>
-                <Link href="/bookmarks"><h6 className={styles.link}>Bookmarks</h6></Link>
-                <h6 className={styles.link}>Sign in</h6>
+                <Link href="/bookmarks"><h6 className={`${styles.link} ${styles.uniqueClass}`}>Bookmarks</h6></Link>
+                <h6 className={styles.link} >Sign in</h6>
                 <div>
                     <button className={styles.signUpLink}>Get started</button>
                 </div>

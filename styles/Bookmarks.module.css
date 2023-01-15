@@ -1,0 +1,14 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    padding-left: 15vw;
+    width: 50vw;
+    
+}
+
+.mainContainerTitle {
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-size: 36px;
+}

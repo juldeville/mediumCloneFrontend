@@ -13,6 +13,7 @@
     display: flex;
     padding-left: 15vw;
     align-items: center;
+    cursor: pointer;
     
 }
 
@@ -35,6 +36,11 @@
 .link {
     margin-right: 30px;
     font-size: 12px;
+
+}
+
+.uniqueClass {
+    cursor: pointer;
 }
 
 
@@ -51,3 +57,5 @@
      
 
 }
+
+
