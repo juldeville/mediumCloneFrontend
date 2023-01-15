@@ -10,13 +10,12 @@ function Home() {
   const [articlesToAdd, setArticlesToAdd] = useState(10)
 
   const [tagData, setTagData] = useState([])
-/*   const [trendingArticle, setTrendingArticle] = useState([]) */
 
   useEffect(() => {
     fetch('http://localhost:3000/articles')
       .then(response => response.json())
       .then(data => {
-/*         setTrendingArticle(data.articles.slice(0, 6)) */
+        console.log(data.articles)
         setArticlesData(data.articles)
         setDisplayedArticles(data.articles.slice(0, 10))
       })
@@ -41,7 +40,8 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [displayedArticles])
 
-  const articles = displayedArticles.map((data, i) => {
+  const randomArticles = articlesData.sort(() => Math.random() - 0.5)
+  const articles = randomArticles.slice(0, displayedArticles.length).map((data, i) => {
     return(<Articles {...data} key={i}/>)
   })
 
