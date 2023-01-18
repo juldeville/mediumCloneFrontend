@@ -3,20 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
-import { useEffect, useState } from 'react'
 
 
 function Articles(props) {
     const dispatch = useDispatch()
     const { author = {} } = props
-    const bookmarks = useSelector(state => state.bookmarks.value)
-    console.log('helloooooo', bookmarks)
-
+   
     const date = new Date(props.date_published);
     const formattedDate = date.toLocaleDateString('default', { month: 'short', day: 'numeric', year: 'numeric' });
 
 
-        const handleBookmark = () => {
+        const handleBookmark = (event) => {
+            event.stopPropagation();
+            event.preventDefault();
             if (props.isBookmarked) {
                 dispatch(removeBookmarkFromStore(props))
             } else {

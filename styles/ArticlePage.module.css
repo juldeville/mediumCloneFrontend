@@ -1,0 +1,60 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.articleContainer {
+    width: 400px;
+    margin-right: 100px;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+}
+
+.authorCard {
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.bigAuthorAvatar {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.authorAvatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+}
+
+.headerAuthor {
+    margin-bottom: 5px;
+}
+
+.headerDetails {
+    color: #999999;
+    font-size: 12px;
+}
+
+.articleImage {
+    margin-top: 20px;
+    height: 300px;
+    width: 400px;
+}
+
+.articleContent {
+    line-height: 2;
+    margin-bottom: 50px;
+}

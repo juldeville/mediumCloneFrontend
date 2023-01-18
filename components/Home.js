@@ -2,10 +2,18 @@ import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react'
 import Articles from './Articles'
 import Trending from './Trending'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link';
+import { addArticleToStore, removeArticleFromStore } from '../reducers/article';
+
+
 
 
 function Home() {
+  const dispatch = useDispatch()
+  const articleID = useSelector(state => state.article.value)
+  
+  
   const [articlesData, setArticlesData] = useState([])
   const [displayedArticles, setDisplayedArticles] = useState(articlesData.slice(0,10))
   const [articlesToAdd, setArticlesToAdd] = useState(10)
@@ -40,7 +48,13 @@ function Home() {
 
   const articles = displayedArticles.map((data, i) => {
     const isBookmarked = bookmarks.some(bookmark => bookmark.title === data.title)
-    return(<Articles {...data} key={i} isBookmarked={isBookmarked || false} visibleBookmark= {true}/>)
+    return(
+      <Link href="/article">
+        <a style={{textDecoration: 'none', color: 'black'}} onClick={() => dispatch(addArticleToStore(data._id))}>
+    <Articles {...data} key={i} isBookmarked={isBookmarked || false} visibleBookmark= {true}/>
+      </a>
+    </Link>
+    )
   })
 
   const mainTags = tagData.map((tag, index) => <p key={index} className={styles.tag}>{tag}</p>)

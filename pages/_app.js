@@ -5,9 +5,10 @@ import Header from '../components/Header';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
 import bookmarks from '../reducers/bookmarks';
+import article from '../reducers/article';
 
 const store = configureStore({
-  reducer: { bookmarks }
+  reducer: { bookmarks, article }
 })
 
 
