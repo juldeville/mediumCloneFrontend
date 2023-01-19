@@ -5,14 +5,14 @@
 }
 
 .articleContainer {
-    width: 400px;
-    margin-right: 100px;
+    width: 500px;
+    margin-right: 120px;
 }
 
 .headerContainer {
     display: flex;
     justify-content: space-between;
-    width: 380px;
+    width: 480px;
 }
 
 .headerLeft {
@@ -50,11 +50,21 @@
 
 .articleImage {
     margin-top: 20px;
-    height: 300px;
-    width: 400px;
+    height: 400px;
+    width: 500px;
 }
 
 .articleContent {
     line-height: 2;
     margin-bottom: 50px;
+}
+
+.iconContainer {
+display: flex;
+align-items: center;
+}
+
+.icon {
+    color: #848484;
+    padding-right: 10px;
 }

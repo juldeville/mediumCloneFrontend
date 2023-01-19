@@ -1,7 +1,7 @@
 import styles from '../styles/Articles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, } from 'react-redux'
 import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
 
 

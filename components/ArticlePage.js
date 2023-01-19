@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeArticleFromStore } from '../reducers/article';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter, faLinkedin, faF } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFacebook, faTwitter, faLinkedin, } from '@fortawesome/free-brands-svg-icons'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 
 
@@ -48,7 +47,10 @@ function ArticlePage () {
                         </div>
                     </div>
                     <div className={styles.iconContainer}>
-                        <FontAwesomeIcon icon={faBookmark}/>
+                        <FontAwesomeIcon icon={faTwitter} className={styles.icon}/>
+                        <FontAwesomeIcon icon={faLinkedin} className={styles.icon}/>
+                        <FontAwesomeIcon icon={faFacebook} className={styles.icon}/>
+                        <FontAwesomeIcon icon={faBookmark} style={{marginLeft: '20px'}}/>
                     </div>
                 </div>
                 <img className={styles.articleImage} src={articleData.image}/>
@@ -65,7 +67,7 @@ function ArticlePage () {
         </div>
     )}
     else {
-        return <div>Loading...</div>
+        return <div></div>
     }
 }
 

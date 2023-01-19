@@ -32,9 +32,6 @@ function Home() {
       })
   }, [])
 
-
-
-
   const handleScroll = () => {
     if(window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
       setDisplayedArticles(prevDisplayedArticles => [...prevDisplayedArticles, ...articlesData.slice(prevDisplayedArticles.length, prevDisplayedArticles.length + articlesToAdd)])
@@ -49,9 +46,9 @@ function Home() {
   const articles = displayedArticles.map((data, i) => {
     const isBookmarked = bookmarks.some(bookmark => bookmark.title === data.title)
     return(
-      <Link href="/article">
+      <Link href="/article" key={i}>
         <a style={{textDecoration: 'none', color: 'black'}} onClick={() => dispatch(addArticleToStore(data._id))}>
-    <Articles {...data} key={i} isBookmarked={isBookmarked || false} visibleBookmark= {true}/>
+    <Articles {...data} isBookmarked={isBookmarked || false} visibleBookmark= {true}/>
       </a>
     </Link>
     )
@@ -59,6 +56,7 @@ function Home() {
 
   const mainTags = tagData.map((tag, index) => <p key={index} className={styles.tag}>{tag}</p>)
 
+  
 
   return (
     <div>

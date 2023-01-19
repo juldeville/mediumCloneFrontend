@@ -4,18 +4,24 @@
     height: 75px;
     align-items: center;
     border-bottom:  1px solid black;
-    background-color: #ffc017;
+    background-color: white;
     width: 100%;
-    position: fixed;
+    position: static;
 }
 
 
 .logo {
     display: flex;
+    padding-left: 5vw;
+    align-items: center;
+    cursor: pointer;   
+}
+
+.logoTight {
+    display: flex;
     padding-left: 15vw;
     align-items: center;
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
 
 .title {
@@ -24,9 +30,15 @@
 
 .headerLinks {
     display: flex;
-    padding-right: 15vw;
+    padding-right: 5vw;
     align-items: center;
 
+}
+
+.headerLinksTight {
+    display: flex;
+    padding-right: 15vw;
+    align-items: center;
 }
 
 .image {
@@ -37,7 +49,6 @@
 .link {
     margin-right: 30px;
     font-size: 12px;
-    cursor: pointer;
 
 }
 
