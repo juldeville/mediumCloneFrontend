@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
 import bookmarks from '../reducers/bookmarks';
 import article from '../reducers/article';
+import Modal from 'react-modal'
 
 const store = configureStore({
   reducer: { bookmarks, article }
@@ -21,6 +22,8 @@ function App({ Component, pageProps }) {
 
   useEffect(() => {
     setCurrentPage(router.pathname);
+    Modal.setAppElement('#__next')
+    
   }, [router.pathname])
   return (
     <Provider store={store}>

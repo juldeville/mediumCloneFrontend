@@ -1,10 +1,12 @@
 import styles from '../styles/ArticlePage.module.css';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeArticleFromStore } from '../reducers/article';
+import article, { removeArticleFromStore } from '../reducers/article';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faLinkedin, } from '@fortawesome/free-brands-svg-icons'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
+
 
 
 
@@ -12,6 +14,10 @@ import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 function ArticlePage () { 
     const dispatch = useDispatch()
     const [articleData, setArticleData] = useState(null)
+    const [isBookmarked, setIsBookmarked] = useState(false)
+
+    const bookmarkedArticles = useSelector(state => state.bookmarks.value)
+    console.log('bookmarked yoyo', bookmarkedArticles)
 
     const articleId = useSelector(state => state.article.value)
     console.log('articleID yoyo', articleId)
@@ -20,16 +26,36 @@ function ArticlePage () {
         fetch(`http://localhost:3000/articles/article/${articleId}`)
         .then(response => response.json())
         .then(data => {
-            setArticleData(data.article)            
+            setArticleData(data.article) 
+            if(bookmarkedArticles.find(article => article._id === articleId[0])) {
+                setIsBookmarked(true)
+                console.log('im here help !', isBookmarked)
+            } else {console.log('nope')}           
         })
         .finally(() => {
-            dispatch(removeArticleFromStore())
+            if(bookmarkedArticles.find(article => article._id === articleId)) {
+                setIsBookmarked(true)
+                console.log('im here help !', isBookmarked)
+            }
+            dispatch(removeArticleFromStore())     
         })
     }, [])
 
-    if(articleData) 
-{    const date = new Date(articleData.date_published);
-    const formattedDate = date.toLocaleDateString('default', { month: 'short', day: 'numeric', year: 'numeric' });}
+    const handleBookmark = () => {
+        if (isBookmarked) {
+            dispatch(removeBookmarkFromStore(articleData))
+        } else {
+            dispatch(addBookmarkToStore(articleData))
+        }
+        setIsBookmarked(!isBookmarked)
+    }
+
+    let iconStyle = {}
+    if (isBookmarked) {
+        iconStyle = {color: '#ffc017'}
+    } else {
+        iconStyle = {color: 'currentColor'}
+    }
 
     if(articleData) { 
             const date = new Date(articleData.date_published);
@@ -50,7 +76,7 @@ function ArticlePage () {
                         <FontAwesomeIcon icon={faTwitter} className={styles.icon}/>
                         <FontAwesomeIcon icon={faLinkedin} className={styles.icon}/>
                         <FontAwesomeIcon icon={faFacebook} className={styles.icon}/>
-                        <FontAwesomeIcon icon={faBookmark} style={{marginLeft: '20px'}}/>
+                        <FontAwesomeIcon onClick={handleBookmark} icon={faBookmark} style={{...iconStyle, marginLeft: '20px', cursor: 'pointer'}}/>
                     </div>
                 </div>
                 <img className={styles.articleImage} src={articleData.image}/>
