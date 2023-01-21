@@ -9,10 +9,11 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
 import bookmarks from '../reducers/bookmarks';
 import article from '../reducers/article';
+import users from '../reducers/users';
 import Modal from 'react-modal'
 
 const store = configureStore({
-  reducer: { bookmarks, article }
+  reducer: { bookmarks, article, users }
 })
 
 

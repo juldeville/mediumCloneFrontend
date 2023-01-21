@@ -7,8 +7,8 @@
     background-color: #ffc017;
     width: 100%;
     position: fixed;
-}
 
+}
 
 .logo {
     display: flex;
@@ -45,7 +45,6 @@
     cursor: pointer;
 }
 
-
 .signUpLink {
     border: 1px solid black;
     border-radius: 20px;
@@ -57,7 +56,45 @@
     cursor: pointer;
     height: 30px;
      
-
 }
 
+.xIconContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 
+.xIcon {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.modalTitle {
+    font-weight: 600;
+    padding-top: 150px;
+    }
+
+.modalSubtitle {
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.textfieldInput {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 300px;
+}
+
+.continueButton {
+    margin-top: 75px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    width: 250px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+}
