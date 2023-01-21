@@ -23,7 +23,7 @@ function Home() {
   const bookmarks = useSelector(state => state.bookmarks.value)
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch('http://localhost:3000/articles/articles')
       .then(response => response.json())
       .then(data => {
         const sortedData = data.articles.sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
