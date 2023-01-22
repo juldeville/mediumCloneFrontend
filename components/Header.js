@@ -38,6 +38,9 @@ function Header () {
       handleLogState()
     },[user.token, isLogged])
 
+    function handleLogOut() {
+      dispatch(signout())
+    }
 
     //Opens or closes Sign In Modal to first Step
     function handleSignInModal () {
@@ -56,7 +59,9 @@ function Header () {
         window.removeEventListener('scroll', handleScroll)
       }
     }, [scrolled])
-  
+
+
+    //handle header color update based on scroll section
     function handleScroll() {
       // Get the current scroll position
       const scrollTop = document.documentElement.scrollTop
@@ -71,16 +76,14 @@ function Header () {
       }
     }
 
-    function handleLogOut() {
-      dispatch(signout())
-    }
+
 
     return (
         <div className={styles.container} style={{backgroundColor: color, transition: 'background-color 0.5s ease-in-out',}}>
-          <Link href="/">
-            <div className={styles.logo}>
-            <img src='rocket.png' className={styles.image}/><h1 className={styles.title}>DHF</h1>
-            </div>
+            <Link href="/">
+              <div className={styles.logo}>
+                <img src='logo.png' className={styles.image}/>
+              </div>
             </Link>
             <div className={styles.headerLinks}>
                 <h6 className={styles.link}>Our story</h6>

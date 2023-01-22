@@ -12,7 +12,7 @@
 
 .logo {
     display: flex;
-    padding-left: 15vw;
+    padding-left: 14.25vw;
     align-items: center;
     cursor: pointer;
     
@@ -22,6 +22,8 @@
     font-size: 42px;
 }
 
+
+
 .headerLinks {
     display: flex;
     padding-right: 15vw;
@@ -30,8 +32,8 @@
 }
 
 .image {
-    width: 60px;
-    height: 60px
+    width: 200px;
+    
 }
 
 .link {

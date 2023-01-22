@@ -4,7 +4,9 @@ import Articles from './Articles'
 import Trending from './Trending'
 import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link';
-import { addArticleToStore, removeArticleFromStore } from '../reducers/article';
+import { addArticleToStore, } from '../reducers/article';
+import { addTagToStore, removeTagFromStore } from "../reducers/tags"
+
 
 
 
@@ -17,8 +19,8 @@ function Home() {
   const [articlesData, setArticlesData] = useState([])
   const [displayedArticles, setDisplayedArticles] = useState(articlesData.slice(0,10))
   const [articlesToAdd, setArticlesToAdd] = useState(10)
+  const [tagData, setTagData] = useState([])
   
-  const tagData = ["implementations","welcome","introduction","codebaseShow","ipsum","qui","quia","et","cupiditate","deserunt"]
 
   const bookmarks = useSelector(state => state.bookmarks.value)
 
@@ -29,8 +31,15 @@ function Home() {
         const sortedData = data.articles.sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
         setArticlesData(sortedData)
         setDisplayedArticles(sortedData.slice(0, 10))
-      })
-  }, [])
+      });
+    fetch('http://localhost:3000/articles/topTags')
+        .then(response => response.json())
+        .then(data => {
+          const tagValues = data.map(tag => tag._id)
+          setTagData(tagValues)})
+        .catch(error => console.log(error));
+}, []);
+
 
   const handleScroll = () => {
     if(window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
@@ -54,20 +63,29 @@ function Home() {
     )
   })
 
-  const mainTags = tagData.map((tag, index) => <p key={index} className={styles.tag}>{tag}</p>)
+  const mainTags = tagData.map((tag, index) => {
+    return(
+      <Link href="/tag" key={index}>
+        <p  onClick={() => dispatch(addTagToStore(tag))} className={styles.tag}>{tag}</p>
+      </Link>
+    )
+})
 
   
 
   return (
     <div>
       <div className={styles.homeHeaderContainer}>
-          <div className={styles.title}>Stay curious.</div>
-          <div className={styles.slogan}>
-            Informing on Chinese space, from Chinese sources.
-          </div>
-          <div>
-            <button className={styles.button}>Start reading</button>
+        <div className={styles.headerLeft}>
+            <div className={styles.title}>Stay curious.</div>
+            <div className={styles.slogan}>
+              Discover stories, thinking, and expertise from writers on any topic.
+            </div>
+            <div>
+              <button className={styles.button}>Start reading</button>
           </div> 
+        </div>
+        <img src={'banner.png'} className={styles.bannerImage}/>
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.articlesContainer}>

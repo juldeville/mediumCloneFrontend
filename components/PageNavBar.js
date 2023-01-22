@@ -50,7 +50,7 @@ function PageNavBar ({page}) {
         <div className={styles.container}>
           <Link href="/">
             <div className={page !== '/bookmarks' ? styles.logo : styles.logoTight}>
-            <img src='rocket.png' className={styles.image}/><h1 className={styles.title}>DHF</h1>
+            <img src='smallLogo.png' className={styles.image}/>
             </div>
             </Link>
             <div className={page !== '/bookmarks' ? styles.headerLinks : styles.headerLinksTight}>

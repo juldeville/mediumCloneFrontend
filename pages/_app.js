@@ -8,12 +8,13 @@ import { useRouter } from 'next/router'
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit'
 import bookmarks from '../reducers/bookmarks';
+import tags from '../reducers/tags';
 import article from '../reducers/article';
 import users from '../reducers/users';
 import Modal from 'react-modal'
 
 const store = configureStore({
-  reducer: { bookmarks, article, users }
+  reducer: { bookmarks, article, users, tags }
 })
 
 

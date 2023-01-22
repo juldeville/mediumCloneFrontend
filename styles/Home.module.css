@@ -1,19 +1,36 @@
+@font-face {
+  font-family: 'Charter Regular';
+  src: url('/fonts/Charter Regular.ttf') format('truetype');
+}
+
+
 .homeHeaderContainer {
   padding-left: 15vw;
   background-color: #ffc017;
-  height: 50vh;
+  height: 58vh;
   display: flex;
-  flex-direction: column;
- justify-content: center;
+  flex-direction: row;
+  align-items: center;
  border-bottom: 1px solid black;
  margin-bottom: 40px;
 padding-top: 50px;
 }
 
-.title {
-  font-size: 75px;
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.bannerImage {
   margin-top: 20px;
-  font-weight: 600;
+  width: 600px;
+}
+
+.title {
+  font-size: 106px;
+  margin-top: 20px;
+  font-weight: 540;
+  font-family: 'Charter Bold';
 }
 
 .button {
@@ -30,7 +47,8 @@ padding-top: 50px;
   margin-top: 20px;
   margin-bottom: 30px;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 25px;
+  width: 60%
   
 }
 
@@ -47,7 +65,7 @@ padding-top: 50px;
   flex-direction: column;
   border-bottom: 1px solid black;
   margin-left: 100px;
-  width: 180px;
+  width: 230px;
 }
 
 .tagTitle {
@@ -55,6 +73,7 @@ padding-top: 50px;
   font-weight: 700;
   margin: 5px;
   font-size: 12px;
+  width: 180px;
 }
 
 .tagContainer {
@@ -72,4 +91,5 @@ padding-top: 50px;
   border-color: #999999;
   font-size: 12px;
   color: #999999;
+  cursor: pointer;
 }

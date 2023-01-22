@@ -112,6 +112,7 @@ function ModalComp({...props}) {
 
         const modalStyle = {content: {width: '800px', height: '800px', flexDirection: 'column', display: 'flex', alignItems: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}
           
+        
       
 
     return(
@@ -127,9 +128,9 @@ function ModalComp({...props}) {
                           <div className={styles.modalSubtitle}>Your username</div>
 
                           {!usernameError ? 
-                                <TextField id="standard-basic" className={styles.textfieldInput} onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} variant="standard"/>
+                                <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueSignIn()}}} id="standard-basic" className={styles.textfieldInput} onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} variant="standard"/>
                                 :
-                                <TextField error helperText='Enter valid username' onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} />}
+                                <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueSignIn()}}} error helperText='Enter valid username' onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} />}
 
                           <div onClick={() => handleContinueSignIn()} className={styles.continueButton}>Continue</div>
                           <div style={{display: 'flex'}}>
@@ -142,7 +143,7 @@ function ModalComp({...props}) {
                         <h2 className={styles.modalTitle}>Enter your password</h2>
                         <div>Enter the password associated with your account.</div>
                         <div className={styles.modalSubtitle}>Your password</div>
-                        <TextField id="standard-basic" variant="standard" type="password"className={styles.textfieldInput} onChange={(e)=> setSignInPassword(e.target.value)} value={signInPassword}/>
+                        <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleSignIn()}}} id="standard-basic" variant="standard" type="password"className={styles.textfieldInput} onChange={(e)=> setSignInPassword(e.target.value)} value={signInPassword}/>
                         <div className={styles.continueButton} onClick={() => handleSignIn()}>Sign in</div>
                       </>)
                       }
@@ -158,16 +159,16 @@ function ModalComp({...props}) {
                         <div className={styles.modalSubtitle}>Your username</div>
 
                         {!usernameError ?
-                              <TextField onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} /> 
+                              <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueGetStarted()}}} onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} /> 
                               :
-                              <TextField error helperText='Enter valid username' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} />}
+                              <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueGetStarted()}}} error helperText='Enter valid username' onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} id="standard-basic" variant="standard" className={styles.textfieldInput} />}
 
                         <div className={styles.modalSubtitle}>Your email</div>
 
                         {!emailError ? 
-                              <TextField onChange={(e) => setSignUpEmail(e.target.value)} value={signUpEmail} id="standard-basic" variant="standard" className={styles.textfieldInput} />
+                              <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueGetStarted()}}} onChange={(e) => setSignUpEmail(e.target.value)} value={signUpEmail} id="standard-basic" variant="standard" className={styles.textfieldInput} />
                               :
-                              <TextField error helperText='Enter valid email' onChange={(e) => setSignUpEmail(e.target.value)} value={signUpEmail} id="standard-basic" variant="standard" className={styles.textfieldInput}/>}
+                              <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleContinueGetStarted()}}} error helperText='Enter valid email' onChange={(e) => setSignUpEmail(e.target.value)} value={signUpEmail} id="standard-basic" variant="standard" className={styles.textfieldInput}/>}
 
                         <div onClick={() => handleContinueGetStarted()} className={styles.continueButton}>Continue</div>
                         <div style={{display: 'flex'}}>
@@ -180,7 +181,7 @@ function ModalComp({...props}) {
                         <h2 className={styles.modalTitle}>Create password</h2>
                         <div>Create a password that will be associated with your account.</div>
                         <div className={styles.modalSubtitle}>Your password</div>
-                        <TextField onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword} id="standard-basic" variant="standard" type="password" className={styles.textfieldInput} />
+                        <TextField onKeyDown={(e) => {if (e.key === 'Enter') {handleSignUp()}}} onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword} id="standard-basic" variant="standard" type="password" className={styles.textfieldInput} />
                         <div className={styles.continueButton} onClick={() => handleSignUp()}>Sign Up</div>
                       </>)
                       }
