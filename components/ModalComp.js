@@ -73,6 +73,7 @@ function ModalComp({...props}) {
               setModalStep(1)
               props.setIsGetStarted(!props.isGetStartedOpen)
             } else {
+              console.log('azefazefazef', signUpUsername, signUpPassword, signUpEmail)
               console.log( 'error, can"t sign up')
             }
           })

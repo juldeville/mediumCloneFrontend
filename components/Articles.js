@@ -25,9 +25,8 @@ function Articles(props) {
             }
         }
      
-        const handleTag = (tag, event) => {
-            event.stopPropagation();
-            event.preventDefault()
+        const handleTag = (tag ) => {
+
             dispatch(addTagToStore(tag))
             
         }
@@ -61,7 +60,7 @@ function Articles(props) {
                     <h6 className={styles.date}>{formattedDate}</h6>
                     <Link href='/tag'>
                     <div className={styles.tagsContainer}>
-                    {props.tags.length > 0 && props.tags.map((tag, index) => <div onClick={() => handleTag(tag)} key={index} className={styles.tags}>{tag}</div>)}
+                    {props.tags.length > 0 && props.tags.map((tag, index) => <div onClick={(event) => {event.stopPropagation, event.preventDefault, handleTag(tag)}} key={index} className={styles.tags}>{tag}</div>)}
                     </div>
                     </Link>
                 </div>
