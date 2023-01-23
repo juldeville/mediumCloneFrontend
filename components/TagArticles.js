@@ -14,7 +14,7 @@ function TagArticles() {
     const tagId = useSelector(state => state.tags.value)
 
     useEffect(() => {
-        fetch(`https://medium-clone-backend.vercel.app/articles/getArticlesByTag/${tagId}`)
+        fetch(`http://localhost:3000/articles/getArticlesByTag/${tagId}`)
         .then(response => response.json())
         .then(data => {
             if(data.result){

@@ -25,14 +25,14 @@ function Home() {
   const bookmarks = useSelector(state => state.bookmarks.value)
 
   useEffect(() => {
-    fetch('https://medium-clone-backend.vercel.app/articles/articles')
+    fetch('http://localhost:3000/articles/articles')
       .then(response => response.json())
       .then(data => {
         const sortedData = data.articles.sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
         setArticlesData(sortedData)
         setDisplayedArticles(sortedData.slice(0, 10))
       });
-    fetch('https://medium-clone-backend.vercel.app/articles/topTags')
+    fetch('http://localhost:3000/articles/topTags')
         .then(response => response.json())
         .then(data => {
           const tagValues = data.map(tag => tag._id)

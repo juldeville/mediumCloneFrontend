@@ -56,7 +56,7 @@ function ModalComp({...props}) {
         
     //Signing up with endpoint
     function handleSignUp() {
-        fetch('https://medium-clone-backend.vercel.app/users/signup', {
+        fetch('http://localhost:3000/users/signup', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -90,7 +90,7 @@ function ModalComp({...props}) {
 
         //Signing in with endpoint
     function handleSignIn() {
-        fetch('https://medium-clone-backend.vercel.app/users/signin', {
+        fetch('http://localhost:3000/users/signin', {
           method:'POST',
           headers: {'Content-Type' : 'application/json'},
           body: JSON.stringify({
