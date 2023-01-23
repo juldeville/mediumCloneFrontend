@@ -13,3 +13,16 @@
     font-size: 36px;
 }
 
+.tagContainer {
+
+    display: flex;
+    align-items: center;
+
+}
+
+.tagIcon {
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    padding-bottom: 7px;
+}

@@ -55,6 +55,7 @@ function PageNavBar ({page}) {
             </Link>
             <div className={page !== '/bookmarks' ? styles.headerLinks : styles.headerLinksTight}>
                 <h6 className={styles.link}>Our story</h6>
+                <Link href="/bookmarks"><h6 className={`${styles.link} ${styles.uniqueClass}`}>Bookmarks</h6></Link>
                 {isLogged ? <h6 onClick={() => handleLogOut()} className={styles.link}>Log out</h6>:
                 <>
                 <h6 className={styles.link} onClick={handleSignInModal}>Sign in</h6>

@@ -1,36 +1,52 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import Articles from "./Articles"
-import styles from '../styles/Bookmarks.module.css'
+import styles from '../styles/TagArticles.module.css'
 import Link from "next/link"
-import { addTagToStore, removeTagFromStore } from "../reducers/tags"
+import { addArticleToStore } from "../reducers/article"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTags} from '@fortawesome/free-solid-svg-icons'
+
 
 function TagArticles() {
     const dispatch = useDispatch()
     const [articleData, setArticleData] = useState([])
+    const tagId = useSelector(state => state.tags.value)
 
-/*     useEffect(() => {
+    useEffect(() => {
+        fetch(`http://localhost:3000/articles/getArticlesByTag/${tagId}`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.result){
+            console.log('this is tagID', tagId)
+            setArticleData(data.articles)
+        } else {
+            console.log('error in tag fetching')
+        }
+        })
+    }, [])
 
-    })
-
-    const bookmarkedArticles = bookmarks.map((data, index) => {
+    const taggedArticles = articleData.map((data, index) => {
     return(
-    <Link href="/article">
+    <Link href="/article"  key={index}>
     <a style={{textDecoration: 'none', color: 'black'}} onClick={() => dispatch(addArticleToStore(data._id))}>
-    <Articles {...data} key={index}  visibleBookmark= {false}/>
+    <Articles {...data}/>
     </a>
     </Link>
     )
 })
- */
 
+    const formattedTagName = tagId.charAt(0).toUpperCase() + tagId.slice(1)
 
 
     return (
         <div className={styles.mainContainer}>
-            <h1 className={styles.mainContainerTitle}>Placeholder</h1>
+            <div className={styles.tagContainer}>
+                <FontAwesomeIcon icon={faTags}  className={styles.tagIcon} />
+                <h1 className={styles.mainContainerTitle}>{formattedTagName}</h1>
+            </div>
             <div>
-                Placeholder
+                {taggedArticles}
             </div>
         </div>
         

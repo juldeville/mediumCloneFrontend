@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState= {
-    value: [],
+    value: null,
 }
 
 export const tagSlice = createSlice({
@@ -10,13 +10,10 @@ export const tagSlice = createSlice({
     reducers: {
         addTagToStore: (state, action) => {
             console.log('Add tag', action.payload)
-            state.value = [...state.value, action.payload];
+            state.value = action.payload;
         },
-        removeTagFromStore: (state, action) => {
-            state.value = []
-        }
     }
 })
 
-export const { addTagToStore, removeTagFromStore } = tagSlice.actions;
+export const { addTagToStore,  } = tagSlice.actions;
 export default tagSlice.reducer

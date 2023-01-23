@@ -1,15 +1,10 @@
 import styles from '../styles/ArticlePage.module.css';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import article, { removeArticleFromStore } from '../reducers/article';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faLinkedin, } from '@fortawesome/free-brands-svg-icons'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
-
-
-
-
 
 function ArticlePage () { 
     const dispatch = useDispatch()
@@ -17,10 +12,10 @@ function ArticlePage () {
     const [isBookmarked, setIsBookmarked] = useState(false)
 
     const bookmarkedArticles = useSelector(state => state.bookmarks.value)
-    console.log('bookmarked yoyo', bookmarkedArticles)
+
 
     const articleId = useSelector(state => state.article.value)
-    console.log('articleID yoyo', articleId)
+   
 
     useEffect(() => {
         fetch(`http://localhost:3000/articles/article/${articleId}`)
@@ -29,15 +24,12 @@ function ArticlePage () {
             setArticleData(data.article) 
             if(bookmarkedArticles.find(article => article._id === articleId[0])) {
                 setIsBookmarked(true)
-                console.log('im here help !', isBookmarked)
-            } else {console.log('nope')}           
+            }          
         })
         .finally(() => {
             if(bookmarkedArticles.find(article => article._id === articleId)) {
                 setIsBookmarked(true)
-                console.log('im here help !', isBookmarked)
-            }
-            dispatch(removeArticleFromStore())     
+            }    
         })
     }, [])
 
@@ -60,7 +52,6 @@ function ArticlePage () {
     if(articleData) { 
             const date = new Date(articleData.date_published);
             const formattedDate = date.toLocaleDateString('default', { month: 'short', day: 'numeric', year: 'numeric' });
-        console.log('article data',articleData)
    return(
         <div className={styles.mainContainer}>
             <div className={styles.articleContainer}>

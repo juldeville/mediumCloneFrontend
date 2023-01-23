@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import { useDispatch, } from 'react-redux'
 import { addBookmarkToStore, removeBookmarkFromStore } from '../reducers/bookmarks'
+import { addTagToStore } from '../reducers/tags'
+import Link from 'next/link'
 
 
 function Articles(props) {
@@ -21,6 +23,13 @@ function Articles(props) {
             } else {
                 dispatch(addBookmarkToStore(props))
             }
+        }
+     
+        const handleTag = (tag) => {
+            event.stopPropagation();
+            event.preventDefault()
+            dispatch(addTagToStore(tag))
+            
         }
 
     let iconStyle = {}
@@ -47,12 +56,16 @@ function Articles(props) {
                         </div>
                     </div>
                 </div>
+                
                 <div className={styles.footerContent}>
                     <h6 className={styles.date}>{formattedDate}</h6>
+                    <Link href='/tag'>
                     <div className={styles.tagsContainer}>
-                    {props.tags.length > 0 && props.tags.map((tag, index) => <div key={index} className={styles.tags}>{tag}</div>)}
+                    {props.tags.length > 0 && props.tags.map((tag, index) => <div onClick={() => handleTag(tag)} key={index} className={styles.tags}>{tag}</div>)}
                     </div>
+                    </Link>
                 </div>
+                
             </div>
             <img className={styles.cardImage} src={props.image}/>
         </div>
