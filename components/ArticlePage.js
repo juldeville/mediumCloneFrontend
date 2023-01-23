@@ -18,7 +18,7 @@ function ArticlePage () {
    
 
     useEffect(() => {
-        fetch(`http://localhost:3000/articles/article/${articleId}`)
+        fetch(`https://medium-clone-backend.vercel.app/articles/article/${articleId}`)
         .then(response => response.json())
         .then(data => {
             setArticleData(data.article) 

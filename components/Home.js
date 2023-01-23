@@ -8,9 +8,6 @@ import { addArticleToStore, } from '../reducers/article';
 import { addTagToStore, removeTagFromStore } from "../reducers/tags"
 
 
-
-
-
 function Home() {
   const dispatch = useDispatch()
   const articleID = useSelector(state => state.article.value)
@@ -25,14 +22,14 @@ function Home() {
   const bookmarks = useSelector(state => state.bookmarks.value)
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles/articles')
+    fetch('https://medium-clone-backend.vercel.app/articles/articles')
       .then(response => response.json())
       .then(data => {
         const sortedData = data.articles.sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
         setArticlesData(sortedData)
         setDisplayedArticles(sortedData.slice(0, 10))
       });
-    fetch('http://localhost:3000/articles/topTags')
+    fetch('https://medium-clone-backend.vercel.app/articles/topTags')
         .then(response => response.json())
         .then(data => {
           const tagValues = data.map(tag => tag._id)
