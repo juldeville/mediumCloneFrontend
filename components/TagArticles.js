@@ -36,7 +36,7 @@ function TagArticles() {
     )
 })
 
-    const formattedTagName = tagId.charAt(0).toUpperCase() + tagId.slice(1)
+    const formattedTagName = tagId?.charAt(0).toUpperCase() + tagId.slice(1)
 
 
     return (

@@ -25,7 +25,7 @@ function Articles(props) {
             }
         }
      
-        const handleTag = (tag) => {
+        const handleTag = (tag, event) => {
             event.stopPropagation();
             event.preventDefault()
             dispatch(addTagToStore(tag))
