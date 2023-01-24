@@ -6,13 +6,15 @@ const LoadingPlaceholder = ({
     count = 10
   }) =>
     _.range(count).map((index) => (
-      <div key={index} style={{width: "600px", display:'flex', justifyContent: 'center', margin: '20px'}}>
+    /*   <div key={index} style={{width: "600px", display:'flex', justifyContent: 'center', margin: '20px'}}>
         <Skeleton circle width={50} height={50} style={{marginRight:'20px'}}/>
         <div>
           <Skeleton width={300} style={{marginBottom:'20px'}} />
           <Skeleton width={300} height={100 } style={{marginBottom:'20px'}}/>
+          
         </div>
-      </div>
+      </div> */
+      <div>hello bitchas</div>
     ));
 
 export default LoadingPlaceholder
