@@ -90,7 +90,7 @@ function Home() {
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.articlesContainer}>
-        {isLoading ? <div>azefazefazef</div> : articles}          
+        {isLoading ? <LoadingPlaceholder/> : articles}          
         </div>
         <div>
           <div className={styles.mainTagContainer}>
