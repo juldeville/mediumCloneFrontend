@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link';
 import { addArticleToStore, } from '../reducers/article';
 import { addTagToStore, removeTagFromStore } from "../reducers/tags"
+import LoadingPlaceholder from './LoadingPlaceholder';
 
 
 function Home() {
@@ -17,17 +18,20 @@ function Home() {
   const [displayedArticles, setDisplayedArticles] = useState(articlesData.slice(0,10))
   const [articlesToAdd, setArticlesToAdd] = useState(10)
   const [tagData, setTagData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   
 
   const bookmarks = useSelector(state => state.bookmarks.value)
 
   useEffect(() => {
+    setIsLoading(true)
     fetch('https://medium-clone-backend.vercel.app/articles/articles')
       .then(response => response.json())
       .then(data => {
         const sortedData = data.articles.sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
         setArticlesData(sortedData)
         setDisplayedArticles(sortedData.slice(0, 10))
+        setIsLoading(false)
       });
     fetch('https://medium-clone-backend.vercel.app/articles/topTags')
         .then(response => response.json())
@@ -54,7 +58,7 @@ function Home() {
     return(
       <Link href="/article" key={i}>
         <a style={{textDecoration: 'none', color: 'black'}} onClick={() => dispatch(addArticleToStore(data._id))}>
-    <Articles {...data} isBookmarked={isBookmarked || false} visibleBookmark= {true}/>
+    <Articles {...data} isBookmarked={isBookmarked || false} visibleBookmark= {true} isLoading= {isLoading}/>
       </a>
     </Link>
     )
@@ -86,7 +90,9 @@ function Home() {
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.articlesContainer}>
-          {articles}
+        {isLoading ? <LoadingPlaceholder/> : articles}
+
+          
         </div>
         <div>
           <div className={styles.mainTagContainer}>
