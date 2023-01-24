@@ -86,7 +86,8 @@ function Header () {
               </div>
             </Link>
             <div className={styles.headerLinks}>
-                <h6 className={styles.link}>Our story</h6>
+              <Link href="/bio">
+                <h6 className={styles.link}>Our story</h6></Link>
                 <Link href="/bookmarks"><h6 className={`${styles.link} ${styles.uniqueClass}`}>Bookmarks</h6></Link>
 
                 {isLogged ?

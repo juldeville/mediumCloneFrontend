@@ -29,6 +29,7 @@ function Articles(props) {
 
             dispatch(addTagToStore(tag))
             
+            
         }
 
     let iconStyle = {}

@@ -24,7 +24,7 @@ function TagArticles() {
             console.log('error in tag fetching')
         }
         })
-    }, [])
+    }, [tagId])
 
     const taggedArticles = articleData.map((data, index) => {
     return(

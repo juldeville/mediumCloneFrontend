@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Charter Regular';
+    src: url('/fonts/Charter Regular.ttf') format('truetype');
+  }
+
+  
+
+  .titleContainer {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px black solid;
+    height: 400px;
+    align-items: center;
+  }
+  
+.mainTitle {
+    font-family: 'Charter Reuglar';
+    font-size: 6vw;
+}
+
+.contentContainer {
+    display: flex;
+    border-bottom: 1px black solid;
+}
+
+.paragraphContainer {
+    width: 50vw;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+}
+
+.textContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+
+.textContainerBis {
+    width: 80%;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    margin-left: 60px;
+    text-align: center;
+    
+}
+
+
