@@ -3,7 +3,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const LoadingPlaceholder = ({
-    count = 10
+    count = 2
   }) =>
     _.range(count).map((index) => (
       <div key={index} style={{width: "600px", display:'flex', justifyContent: 'center', margin: '20px'}}>
