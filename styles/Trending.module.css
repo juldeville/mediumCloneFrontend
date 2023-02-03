@@ -1,0 +1,93 @@
+.card {
+    display: flex;
+    flex-direction: column; 
+    width: 18.5vw;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 150px;
+    justify-content: space-evenly;
+  }
+  
+  .cardAuthorAndBookmark {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .authorInfo {
+      display: flex;
+      align-items: center;
+  }
+  
+  .authorAvatar {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 30px;
+  }
+  
+  .username {
+      font-size: 13px;
+      font-weight: 500;
+  }
+  
+  .bookmarkIcon {
+      cursor: pointer;
+  }
+  
+  .bookmarkIcon {
+      cursor: pointer;
+  }
+  
+  .articleContent {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .articleTitle {
+      font-weight: 700;
+      font-size: 18px;
+  }
+  
+  .articleDescription {
+      font-size: 16px;
+  }
+  
+  .footerContent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+  
+  }
+  
+  .date {
+      color: #999999;
+      font-size: 12px;
+  }
+  
+  .tagsContainer {
+      display: flex;
+     
+  }
+  
+  .tags {
+      margin-left: 10px;
+      background-color: #e6e6e6;    padding: 5px;
+      border-radius: 10px;
+      color: black;
+      font-weight: 200;
+      font-size: 12px;
+  }
+  
+  .cardAndImage {
+      display: flex;
+      align-items: center;
+  
+      
+  }
+  
+  .cardImage {
+      width: 200px;
+      height: 150px;
+      margin-left: 40px;
+  }

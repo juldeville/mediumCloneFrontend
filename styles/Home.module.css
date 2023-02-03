@@ -7,7 +7,7 @@
 .homeHeaderContainer {
   padding-left: 15vw;
   background-color: #ffc017;
-  height: 58vh;
+  height: 54vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,6 +54,30 @@ padding-top: 50px;
 
 .articlesContainer {
   padding-left: 15vw;
+}
+
+
+.container{
+display: flex;
+align-items: center;
+width: 20vw;
+justify-content: space;
+
+}
+
+.trendingArticlesContainer {
+  padding-left: 15vw;
+  display: flex;
+  width: 90vw;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  
+}
+
+.mainTrendingContainer {
+  border-bottom: 1px solid black;
+  border-color: #e6e6e6;
+  margin-bottom: 70px;
 }
 
 .bodyContainer {

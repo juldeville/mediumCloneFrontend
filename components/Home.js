@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { addArticleToStore, } from '../reducers/article';
 import { addTagToStore, removeTagFromStore } from "../reducers/tags"
 import LoadingPlaceholder from './LoadingPlaceholder';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartLine } from  "@fortawesome/free-solid-svg-icons"
+
 
 
 function Home() {
@@ -19,6 +22,7 @@ function Home() {
   const [articlesToAdd, setArticlesToAdd] = useState(10)
   const [tagData, setTagData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [topArticlesData, setTopArticlesData] = useState([])
   
 
   const bookmarks = useSelector(state => state.bookmarks.value)
@@ -33,7 +37,12 @@ function Home() {
         setDisplayedArticles(sortedData.slice(0, 10))
         setIsLoading(false)
       });
-    fetch('https://medium-clone-backend.vercel.app/articles/topTags')
+      fetch('https://medium-clone-backend.vercel.app/articles/topArticles')
+        .then(response => response.json())
+        .then(data => {
+          setTopArticlesData(data.articles)
+        })
+      fetch('https://medium-clone-backend.vercel.app/articles/topTags')
         .then(response => response.json())
         .then(data => {
           const tagValues = data.map(tag => tag._id)
@@ -64,6 +73,19 @@ function Home() {
     )
   })
 
+  const topArticles = topArticlesData.map((data, i) => {
+    return(
+      <Link href='/article' key={i}>
+        <a style={{textDecoration: 'none', color: 'black'}} onClick={() => dispatch(addArticleToStore(data._id))}>
+          <div className={styles.container}>
+            <span style={{color: '#e6e6e6', fontWeight: 600, fontSize: '30px', marginRight: '30px', paddingBottom:'75px' }}>0{i+1}</span>
+            <Trending {...data}  />
+          </div>
+        </a>
+      </Link>
+    )
+  })
+
   const mainTags = tagData.map((tag, index) => {
     return(
       <Link href="/tag" key={index}>
@@ -86,6 +108,17 @@ function Home() {
           </div> 
         </div>
         <img src={'banner.png'} className={styles.bannerImage}/>
+      </div>
+      <div className={styles.mainTrendingContainer}>
+        <div>
+          <div style={{paddingLeft: '15vw', display: 'flex'}}>
+          <FontAwesomeIcon icon={faChartLine} style={{marginRight:'20px'}}/>
+           <div style={{fontWeight:600, fontSize:'14px'}}>Trending on Medium</div> 
+          </div>
+          <div className={styles.trendingArticlesContainer}>
+          {isLoading ? <LoadingPlaceholder/> : topArticles}          
+          </div>
+        </div>
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.articlesContainer}>
